@@ -35,9 +35,10 @@ namespace SupercowFontEditor
                     float Y = (int)(i / glyphsPRow.Value) * glyphSize;
                     float X = (int)(i % glyphsPRow.Value) * glyphSize;
                     var idx = Array.FindIndex(nevofont.Glyphs,
-                        el => el.Glyph == item.Text.ToCharArray()[0]);
-                    nevofont.Glyphs[idx].GlyphWidth = 
-                        (ushort)GetCharSize(item.Text, g, stringFormat).Width;
+                        el => el.Glyph == item.Text.ToCharArray()[0]); 
+                    var size = (ushort)GetCharSize(item.Text, g, stringFormat).Width;
+                    if (size == 0) size++;
+                    nevofont.Glyphs[idx].GlyphWidth = size;
                     DrawChar(item.Text, new RectangleF(X, Y, glyphSize, glyphSize),
                         g, stringFormat);
                     i++;
