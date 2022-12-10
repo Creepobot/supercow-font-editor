@@ -1,4 +1,4 @@
-﻿using Eblan;
+﻿using EblanModule;
 using System.Windows.Forms;
 
 namespace SupercowFontEditor

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Eblan
+namespace EblanModule
 {
     public static class Eblan
     {

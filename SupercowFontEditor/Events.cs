@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using Eblan;
+using EblanModule;
 using Nevosoft;
 
 namespace SupercowFontEditor

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EblanModule;
+using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading;
@@ -26,7 +27,7 @@ namespace SupercowFontEditor
 
         private static void ExceptionHandler(object s, ThreadExceptionEventArgs t)
         {
-            MessageBox.Show($"{t.Exception.Message}\n{t.Exception.StackTrace}", t.Exception.Source, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show($"{t.Exception.Message}\n{t.Exception.StackTrace}", t.Exception.Source.EblanRnd(Eblan.EblanType.Question), MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }
