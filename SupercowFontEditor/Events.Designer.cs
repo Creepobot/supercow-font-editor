@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using Eblan;
+using System.Windows.Forms;
 
 namespace SupercowFontEditor
 {
@@ -37,8 +38,6 @@ namespace SupercowFontEditor
             this.underline = new System.Windows.Forms.CheckBox();
             this.strikeout = new System.Windows.Forms.CheckBox();
             this.fontGroup = new System.Windows.Forms.GroupBox();
-            this.outlineSlider = new SupercowFontEditor.SliderNumericUpDown(this.components);
-            this.fontPicker = new FontComboBox();
             this.outlineSizeLabel = new System.Windows.Forms.Label();
             this.outlineColorLabel = new System.Windows.Forms.Label();
             this.fontColorLabel = new System.Windows.Forms.Label();
@@ -63,6 +62,8 @@ namespace SupercowFontEditor
             this.glyph = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.exportFont = new System.Windows.Forms.Button();
             this.importFont = new System.Windows.Forms.Button();
+            this.outlineSlider = new SupercowFontEditor.SliderNumericUpDown(this.components);
+            this.fontPicker = new FontComboBox();
             this.fontGroup.SuspendLayout();
             this.previewGroup.SuspendLayout();
             this.previewScroll.SuspendLayout();
@@ -144,37 +145,6 @@ namespace SupercowFontEditor
             this.fontGroup.TabIndex = 2;
             this.fontGroup.TabStop = false;
             this.fontGroup.Text = "Font Settings";
-            // 
-            // outlineSlider
-            // 
-            this.outlineSlider.DecimalPlaces = 2;
-            this.outlineSlider.Location = new System.Drawing.Point(178, 42);
-            this.outlineSlider.Name = "outlineSlider";
-            this.outlineSlider.NumericUpDownMaximum = 100F;
-            this.outlineSlider.NumericUpDownMinimum = 0F;
-            this.outlineSlider.Size = new System.Drawing.Size(166, 28);
-            this.outlineSlider.TabIndex = 0;
-            this.outlineSlider.TickFrequency = 5;
-            this.outlineSlider.TrackBarMaximum = 50;
-            this.outlineSlider.Value = 0F;
-            this.outlineSlider.ValueChanged += new SupercowFontEditor.SliderNumericUpDown.ValueChangedHandler(this.OutlineSlider_Changed);
-            // 
-            // fontPicker
-            // 
-            this.fontPicker.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.fontPicker.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.fontPicker.FormattingEnabled = true;
-            this.fontPicker.IntegralHeight = false;
-            this.fontPicker.Items.AddRange(new object[] {
-            "Arial",
-            "Arial",
-            "Arial"});
-            this.fontPicker.Location = new System.Drawing.Point(8, 14);
-            this.fontPicker.MaxDropDownItems = 20;
-            this.fontPicker.Name = "fontPicker";
-            this.fontPicker.Size = new System.Drawing.Size(121, 21);
-            this.fontPicker.TabIndex = 0;
-            this.fontPicker.SelectedIndexChanged += new System.EventHandler(this.FontPicker_IndexSelected);
             // 
             // outlineSizeLabel
             // 
@@ -351,25 +321,13 @@ namespace SupercowFontEditor
             // glyphsPRow
             // 
             this.glyphsPRow.Location = new System.Drawing.Point(206, 17);
-            this.glyphsPRow.Maximum = new decimal(new int[] {
-            32,
-            0,
-            0,
-            0});
-            this.glyphsPRow.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.glyphsPRow.Maximum = 32;
+            this.glyphsPRow.Minimum = 1;
             this.glyphsPRow.Name = "glyphsPRow";
             this.glyphsPRow.Size = new System.Drawing.Size(36, 20);
             this.glyphsPRow.TabIndex = 16;
             this.glyphsPRow.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.glyphsPRow.Value = new decimal(new int[] {
-            22,
-            0,
-            0,
-            0});
+            this.glyphsPRow.Value = 22;
             this.glyphsPRow.ValueChanged += new System.EventHandler(this.GlyphsPRow_Changed);
             // 
             // imageSizeLabel
@@ -383,25 +341,13 @@ namespace SupercowFontEditor
             // imageSize
             // 
             this.imageSize.Location = new System.Drawing.Point(67, 17);
-            this.imageSize.Maximum = new decimal(new int[] {
-            4096,
-            0,
-            0,
-            0});
-            this.imageSize.Minimum = new decimal(new int[] {
-            128,
-            0,
-            0,
-            0});
+            this.imageSize.Maximum = 4096;
+            this.imageSize.Minimum = 128;
             this.imageSize.Name = "imageSize";
             this.imageSize.Size = new System.Drawing.Size(46, 20);
             this.imageSize.TabIndex = 2;
             this.imageSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.imageSize.Value = new decimal(new int[] {
-            1034,
-            0,
-            0,
-            0});
+            this.imageSize.Value = 1034;
             this.imageSize.ValueChanged += new System.EventHandler(this.ImageSize_Changed);
             // 
             // addCharText
@@ -432,6 +378,34 @@ namespace SupercowFontEditor
             this.importFont.UseVisualStyleBackColor = true;
             this.importFont.Click += new System.EventHandler(this.ImportFont_Click);
             // 
+            // outlineSlider
+            // 
+            this.outlineSlider.DecimalPlaces = 2;
+            this.outlineSlider.Location = new System.Drawing.Point(178, 42);
+            this.outlineSlider.Name = "outlineSlider";
+            this.outlineSlider.NumericUpDownMaximum = 100F;
+            this.outlineSlider.NumericUpDownMinimum = 0F;
+            this.outlineSlider.Size = new System.Drawing.Size(166, 28);
+            this.outlineSlider.TabIndex = 0;
+            this.outlineSlider.TickFrequency = 5;
+            this.outlineSlider.TrackBarMaximum = 50;
+            this.outlineSlider.Value = 0F;
+            this.outlineSlider.ValueChanged += new SupercowFontEditor.SliderNumericUpDown.ValueChangedHandler(this.OutlineSlider_Changed);
+            // 
+            // fontPicker
+            // 
+            this.fontPicker.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.fontPicker.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.fontPicker.FormattingEnabled = true;
+            this.fontPicker.IntegralHeight = false;
+            this.fontPicker.Items.AddRange(new object[] { "Arial" });
+            this.fontPicker.Location = new System.Drawing.Point(8, 14);
+            this.fontPicker.MaxDropDownItems = 20;
+            this.fontPicker.Name = "fontPicker";
+            this.fontPicker.Size = new System.Drawing.Size(121, 21);
+            this.fontPicker.TabIndex = 0;
+            this.fontPicker.SelectedIndexChanged += new System.EventHandler(this.FontPicker_IndexSelected);
+            // 
             // Form
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -447,7 +421,7 @@ namespace SupercowFontEditor
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form";
-            this.Text = "Supercow Font Editor";
+            this.Text = $"Supercow {"Font".EblanRnd()} Editor";
             this.fontGroup.ResumeLayout(false);
             this.previewGroup.ResumeLayout(false);
             this.previewScroll.ResumeLayout(false);

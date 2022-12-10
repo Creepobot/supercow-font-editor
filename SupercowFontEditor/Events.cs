@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using Eblan;
 using Nevosoft;
 
 namespace SupercowFontEditor
@@ -25,7 +26,7 @@ namespace SupercowFontEditor
 
         private void FontPicker_IndexSelected(object s, EventArgs e)
         {
-            fontFamily = new FontFamily((s as FontComboBox).Text);
+            fontFamily = new FontFamily(fontPicker.Text);
             DrawPreview();
         }
 
@@ -49,8 +50,8 @@ namespace SupercowFontEditor
         private void ExportImage_Click(object s, EventArgs e)
         {
             using (var dialog = new SaveFileDialog()
-            { FileName = "font.png",
-                OverwritePrompt = true,
+            { FileName = "font.png", OverwritePrompt = true,
+                Title = "Save " + "Image".EblanRnd(),
                 Filter = "PNG Image (*.png)|*.png" })
             {
                 if (dialog.ShowDialog() != DialogResult.OK) return;
@@ -97,6 +98,7 @@ namespace SupercowFontEditor
         {
             using (var dialog = new OpenFileDialog()
             { Filter = "Nevosoft Font Data (*.dat)|*.dat",
+                Title = "Select " + "Font".EblanRnd(),
                 RestoreDirectory = true })
             {
                 if (dialog.ShowDialog() != DialogResult.OK) return;
@@ -118,9 +120,9 @@ namespace SupercowFontEditor
         private void ExportFont_Click(object s, EventArgs e)
         {
             using (var dialog = new SaveFileDialog()
-            { FileName = "font.dat",
-                OverwritePrompt = true,
-                Filter = "Nevosoft Font Data (*.dat)|*.dat" })
+            { FileName = "font.dat", OverwritePrompt = true,
+                Filter = "Nevosoft Font Data (*.dat)|*.dat",
+                Title = "Save " + "Font".EblanRnd() })
             {
                 if (dialog.ShowDialog() != DialogResult.OK) return;
                 nevofont.Save(dialog.FileName);
