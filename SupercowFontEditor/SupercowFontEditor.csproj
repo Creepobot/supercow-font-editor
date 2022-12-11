@@ -32,7 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>32.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\32.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -98,7 +98,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="32.ico" />
+    <Content Include="Resources\32.ico" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />

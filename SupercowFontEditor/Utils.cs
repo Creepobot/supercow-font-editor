@@ -18,7 +18,8 @@ namespace SupercowFontEditor
         {
             FormatFlags = StringFormatFlags.NoClip
                 | StringFormatFlags.MeasureTrailingSpaces,
-            Alignment = StringAlignment.Center
+            Alignment = StringAlignment.Center,
+            LineAlignment = StringAlignment.Center
         };
 
         private void DrawPreview()
