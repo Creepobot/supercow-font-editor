@@ -1,13 +1,17 @@
 # SupercowFontEditor
 WinForms application for editing font files in Supercow game
 
-## Installation
+## Usage
+
+### Installation
 
 1. Download latest version [here](https://github.com/Creepobot/supercow-font-editor/releases/latest)
 2. ???
 3. Profit!
 
-## Usage
+### Requirements
+
+- .NET Framework 3.5
 
 ### Designations
 
