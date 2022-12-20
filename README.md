@@ -4,9 +4,7 @@ WinForms application for editing font files in Supercow game
 ## Installation
 
 1. Download latest version [here](https://github.com/Creepobot/supercow-font-editor/releases/latest)
-
 2. ???
-
 3. Profit!
 
 ## Usage
@@ -16,13 +14,21 @@ WinForms application for editing font files in Supercow game
 Fonts in Supercow game have two files:
 
 - `.tga` - Tilemap image. Contains glyphs of specific symbols
-
 - `.dat` - Main file. Very important! Contains texture size, number of characters per row, characters themselves and width of each character
 
 ### Features of program
 
-- Can create font (both tilemap and main files) from given symbols and font settings
+#### Font settings list
 
+- Font itself
+- Font styles
+- Font color
+- Outline size
+- Outline color
+
+#### Main features
+
+- Can create font (both tilemap and main files) from given symbols and font settings
 - Can edit existing `.dat` file
 
 ## Build
