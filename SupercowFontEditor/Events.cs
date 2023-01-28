@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows.Forms;
 using EblanModule;
 using Nevosoft;
+using TGASharpLib;
 
 namespace SupercowFontEditor
 {
@@ -50,12 +51,12 @@ namespace SupercowFontEditor
         private void ExportImage_Click(object s, EventArgs e)
         {
             using (var dialog = new SaveFileDialog()
-            { FileName = "font.png", OverwritePrompt = true,
+            { FileName = "font.tga", OverwritePrompt = true,
                 Title = "Save " + "Image".EblanRnd(),
-                Filter = "PNG Image (*.png)|*.png" })
+                Filter = "TGA Image (*.tga)|*.tga" })
             {
                 if (dialog.ShowDialog() != DialogResult.OK) return;
-                preview.Image.Save(dialog.FileName);
+                TGA.FromBitmap((Bitmap)preview.Image).Save(dialog.FileName);
             }
         }
 
@@ -87,7 +88,7 @@ namespace SupercowFontEditor
             ListViewItem item = new ListViewItem()
             { Text = addCharText.Text };
             charsList.Items.Add(item);
-            SizeF size = GetCharSize(addCharText.Text, Graphics.FromImage(preview.Image), stringFormat);
+            SizeF size = GetCharSize(addCharText.Text, Graphics.FromImage(preview.Image));
             var trueCount = nevofont.Glyphs.Count(i => i.GlyphWidth != 0);
             nevofont.Glyphs[trueCount].Glyph = addCharText.Text.ToCharArray()[0];
             nevofont.Glyphs[trueCount].GlyphWidth = (ushort)size.Width;

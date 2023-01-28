@@ -32,7 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\32.ico</ApplicationIcon>
+    <ApplicationIcon>>Resources\256.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -54,6 +54,7 @@
     </Compile>
     <Compile Include="Libs\Eblan.cs" />
     <Compile Include="Libs\NevosoftFont.cs" />
+    <Compile Include="Libs\TGASharpLib.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Libs\FontComboBox.cs">
@@ -97,11 +98,11 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
+    <Content Include="256.ico" />
+    <Content Include="Resources\256.ico" />
     <Content Include="Resources\32.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

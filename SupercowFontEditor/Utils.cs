@@ -37,11 +37,13 @@ namespace SupercowFontEditor
                     float X = (int)(i % glyphsPRow.Value) * glyphSize;
                     var idx = Array.FindIndex(nevofont.Glyphs,
                         el => el.Glyph == item.Text.ToCharArray()[0]); 
-                    var size = (ushort)GetCharSize(item.Text, g, stringFormat).Width;
+                    var size = (ushort)GetCharSize(item.Text, g).Width;
+                    var test = (ushort)(outlineSlider.Value / 2 + size);
                     if (size == 0) size++;
+                    else if (test < glyphSize) size = test;
+                    else size = (ushort)glyphSize;
                     nevofont.Glyphs[idx].GlyphWidth = size;
-                    DrawChar(item.Text, new RectangleF(X, Y, glyphSize, glyphSize),
-                        g, stringFormat);
+                    DrawChar(item.Text, new RectangleF(X, Y, glyphSize, glyphSize), g);
                     i++;
                 }
             }
@@ -59,19 +61,19 @@ namespace SupercowFontEditor
             }
         }
 
-        private SizeF GetCharSize(string c, in Graphics g, StringFormat sf)
+        private SizeF GetCharSize(string c, in Graphics g)
         {
-            sf.SetMeasurableCharacterRanges(new CharacterRange[1] { new CharacterRange(0, 1) });
+            stringFormat.SetMeasurableCharacterRanges(new CharacterRange[1] { new CharacterRange(0, 1) });
             Font stringFont = new Font(fontFamily, (float)(imageSize.Value / glyphsPRow.Value / 2), fontStyle);
             SizeF size = g.MeasureString(c, stringFont);
             RectangleF layoutRect = new RectangleF(0, 0, size.Width, size.Height);
-            var stringRegions = g.MeasureCharacterRanges(c, stringFont, layoutRect, sf);
+            var stringRegions = g.MeasureCharacterRanges(c, stringFont, layoutRect, stringFormat);
             Region region = stringRegions[0];
             RectangleF rect = region.GetBounds(g);
             return rect.Size;
         }
 
-        private void DrawChar(string c, RectangleF r, in Graphics g, StringFormat sf)
+        private void DrawChar(string c, RectangleF r, in Graphics g)
         {
             using (GraphicsPath gp = new GraphicsPath() { FillMode = FillMode.Winding })
             using (Pen outline = new Pen(outlineSlider.Value != 0 ?
@@ -80,7 +82,7 @@ namespace SupercowFontEditor
             using (Brush foreBrush = new SolidBrush(Color.FromArgb(255, fontColor.BackColor)))
             {
                 gp.AddString(c, fontFamily, (int)fontStyle,
-                    g.DpiX * (float)(imageSize.Value / glyphsPRow.Value / 2) / 72, r, sf);
+                    g.DpiX * (float)(imageSize.Value / glyphsPRow.Value / 2) / 72, r, stringFormat);
                 g.DrawPath(outline, gp);
                 g.FillPath(foreBrush, gp);
             }
