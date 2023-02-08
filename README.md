@@ -35,14 +35,6 @@ Fonts in Supercow game have two files:
 - Can create font (both tilemap and main files) from given symbols and font settings
 - Can edit existing `.dat` file
 
-## Build
-
-### Requirements
-
-- .NET Framework 3.5
-
-Uhhh, I think that's all
-
 ## Communication
 
 ### For whom the program was created
